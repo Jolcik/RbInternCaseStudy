@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 void main() => runApp(RbCaseStudyApp());
 
@@ -23,6 +24,7 @@ class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
 
   final String title;
+  final String dateText = DateFormat("EEEE, d MMM yyyy").format(DateTime.now()).toUpperCase();
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -81,6 +83,17 @@ class _HomePageState extends State<HomePage> {
               ),
             )
           ),
+          Container(
+            height: 100.0,
+          ),
+          Text(
+            widget.dateText,
+            style: TextStyle(
+                color: Colors.black87,
+                fontSize: 24,
+                fontWeight: FontWeight.bold
+            ),
+          )
         ],
       ),
     );
