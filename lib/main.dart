@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 void main() => runApp(RbCaseStudyApp());
 
 Color mainColor = Color(0xffFFBE43);
+Color buttonGradientStartColor = Color(0xff00287D);
+Color buttonGradientEndColor = Color(0xff0279C9);
 
 class RbCaseStudyApp extends StatelessWidget {
   @override
@@ -56,10 +58,26 @@ class _HomePageState extends State<HomePage> {
             height: 50,
             margin: EdgeInsets.only(top: 32.0),
             child: RaisedButton(
-              child: Text('Add new sleeping record'),
               onPressed: null,
               shape: RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(50.0)
+                  borderRadius: new BorderRadius.circular(30.0),
+              ),
+              padding: EdgeInsets.all(0.0),
+              child: Ink(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [buttonGradientStartColor, buttonGradientEndColor],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter
+                  ),
+                  borderRadius: BorderRadius.circular(30.0)
+                ),
+                child: Center(
+                  child: Text(
+                    "Add new sleeping record",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                )
               ),
             )
           ),
