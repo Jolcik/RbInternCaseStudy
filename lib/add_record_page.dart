@@ -34,7 +34,15 @@ class AddRecordPageState extends State<AddRecordPage> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text("Sleeping tracker"),
+          title: Text(
+              "Sleeping tracker",
+            style: TextStyle(
+                color: Colors.white
+            ),
+          ),
+          iconTheme: IconThemeData(
+            color: Colors.white
+          ),
         ),
         body: Container(
           padding: EdgeInsets.all(16.0),

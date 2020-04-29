@@ -62,7 +62,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(
+            widget.title,
+          style: TextStyle(
+            color: Colors.white
+          ),
+        ),
       ),
       body: ListView(
         padding: EdgeInsets.symmetric(horizontal: 16.0),
