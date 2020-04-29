@@ -1,3 +1,4 @@
+import 'package:easy_dialogs/easy_dialogs.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -9,6 +10,11 @@ import 'package:numberpicker/numberpicker.dart';
 class AddRecordPage extends StatefulWidget {
   final records;
 
+  final List<String> _sleepTypes = [
+    "Night's sleep",
+    "Nap"
+  ];
+
   AddRecordPage({@required this.records});
 
   @override
@@ -17,11 +23,10 @@ class AddRecordPage extends StatefulWidget {
 
 class AddRecordPageState extends State<AddRecordPage> {
   final _recordDate = DateTime.now();
-  String _sleepType = "Night, nap, etc";
+  String _sleepType;
   int _sleepDurationInMinutes;
 
   BuildContext _context;
-  AddRecordPageRowItem durationItem;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +54,7 @@ class AddRecordPageState extends State<AddRecordPage> {
               AddRecordPageRowItem(
                 icon: Icons.airline_seat_individual_suite,
                 title: "Sleep type",
-                subtitle: _sleepType,
+                subtitle: _getSleepTypeSubtitle(),
                 onPressed: _addSleepType,
               ),
               AddRecordPageRowItem(
@@ -71,6 +76,13 @@ class AddRecordPageState extends State<AddRecordPage> {
         ));
   }
 
+  String _getSleepTypeSubtitle(){
+    if(_sleepType != null)
+      return _sleepType;
+    else
+      return "Night, nap, etc";
+  }
+
   String _getSleepDurationSubtitle() {
     if (_sleepDurationInMinutes != null)
       return "$_sleepDurationInMinutes minutes";
@@ -79,7 +91,16 @@ class AddRecordPageState extends State<AddRecordPage> {
   }
 
   void _addSleepType() {
-
+    showDialog(
+        context: _context,
+        builder: (_context) => SingleChoiceDialog<String>(
+          title: Text("Choose sleep type:"),
+          items: widget._sleepTypes,
+          onSelected: (String type) {
+            setState(() => _sleepType = type);
+          },
+        )
+    );
   }
 
   void _addSleepDuration() {
