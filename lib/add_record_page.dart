@@ -10,10 +10,13 @@ import 'package:numberpicker/numberpicker.dart';
 class AddRecordPage extends StatefulWidget {
   final List<SleepRecord> records;
 
-  final List<String> _sleepTypes = [
+  final List<String> sleepTypes = [
     "Night's sleep",
     "Nap"
   ];
+
+  final String sleepTypePickerHint = "Click to select sleep type...";
+  final String sleepDurationPickerHint = "Click to select sleep duration...";
 
   AddRecordPage({@required this.records});
 
@@ -88,14 +91,14 @@ class AddRecordPageState extends State<AddRecordPage> {
     if(_sleepType != null)
       return _sleepType;
     else
-      return "Night, nap, etc";
+      return widget.sleepTypePickerHint;
   }
 
   String _getSleepDurationSubtitle() {
     if (_sleepDurationInMinutes != null)
       return "$_sleepDurationInMinutes minutes";
     else
-      return "...";
+      return widget.sleepDurationPickerHint;
   }
 
   void _addSleepType() {
@@ -103,7 +106,7 @@ class AddRecordPageState extends State<AddRecordPage> {
         context: _context,
         builder: (_context) => SingleChoiceDialog<String>(
           title: Text("Choose sleep type:"),
-          items: widget._sleepTypes,
+          items: widget.sleepTypes,
           onSelected: (String type) {
             setState(() => _sleepType = type);
           },
