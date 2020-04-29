@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:rbcasestudyapp/add_record_page.dart';
+import 'package:rbcasestudyapp/rounded_gradient_button.dart';
 import 'package:rbcasestudyapp/sleep_record.dart';
 import 'package:rbcasestudyapp/sleep_record_item.dart';
 
@@ -44,11 +46,20 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  void _pushAddRecord(){
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (BuildContext context){
+          return AddRecordPage(
+            records: _records,
+          );
+        }
+      )
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    _records.add(SleepRecord(hour: "10:42", title: "Night's Sleep", subtitle: "6 hours 12 minutes"));
-    _records.add(SleepRecord(hour: "14:21", title: "Nap", subtitle: "2 hours 14 minutes"));
-
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -74,28 +85,9 @@ class _HomePageState extends State<HomePage> {
           Container(
             height: 50,
             margin: EdgeInsets.only(top: 32.0),
-            child: RaisedButton(
-              onPressed: null,
-              shape: RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(30.0),
-              ),
-              padding: EdgeInsets.all(0.0),
-              child: Ink(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [buttonGradientStartColor, buttonGradientEndColor],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter
-                  ),
-                  borderRadius: BorderRadius.circular(30.0)
-                ),
-                child: Center(
-                  child: Text(
-                    "Add new sleeping record",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                )
-              ),
+            child: RoundedGradientButton(
+              text: "Add new sleeping record",
+              onPressedListener: () => _pushAddRecord(),
             )
           ),
           Container(
