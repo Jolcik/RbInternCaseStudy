@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:rbcasestudyapp/sleep_record.dart';
+import 'package:rbcasestudyapp/sleep_record_item.dart';
 
 void main() => runApp(RbCaseStudyApp());
 
@@ -32,8 +34,21 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  final _records = <SleepRecord>[];
+
+  Widget _buildSleepRecordItem(SleepRecord record){
+    return SleepRecordItem(
+      hour: record.hour,
+      title: record.title,
+      subtitle: record.subtitle,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    _records.add(SleepRecord(hour: "10:42", title: "Night's Sleep", subtitle: "6 hours 12 minutes"));
+    _records.add(SleepRecord(hour: "14:21", title: "Nap", subtitle: "2 hours 14 minutes"));
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -89,11 +104,21 @@ class _HomePageState extends State<HomePage> {
           Text(
             widget.dateText,
             style: TextStyle(
-                color: Colors.black87,
-                fontSize: 24,
+                color: Colors.black54,
+                fontSize: 18,
                 fontWeight: FontWeight.bold
             ),
-          )
+          ),
+          Card(
+              margin: EdgeInsets.symmetric(
+                vertical: 32.0
+              ),
+              child: Column(
+                children: _records
+                    .map((record) => _buildSleepRecordItem(record))
+                    .toList(),
+              )
+          ),
         ],
       ),
     );
