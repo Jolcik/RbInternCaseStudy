@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 class SleepRecord {
 
-  final String hour;
-  final String title;
-  final String subtitle;
+  final DateTime date;
+  final String type;
+  final int durationInMinutes;
 
   SleepRecord({
-    @required this.hour,
-    @required this.title,
-    @required this.subtitle
+    @required this.date,
+    @required this.type,
+    @required this.durationInMinutes
   });
 
 }

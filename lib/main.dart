@@ -40,9 +40,9 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildSleepRecordItem(SleepRecord record){
     return SleepRecordItem(
-      hour: record.hour,
-      title: record.title,
-      subtitle: record.subtitle,
+      hour: DateFormat("HH:mm").format(record.date),
+      title: record.type,
+      subtitle: record.durationInMinutes.toString(),
     );
   }
 
