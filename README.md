@@ -1,16 +1,3 @@
-# rbcasestudyapp
+# RB Intern Case Study App
 
-A new Flutter application.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+It is my first simple app written in Dart/Flutter, so the code is a bit messy (probably more than a bit). I know there are a few things i can improve, like extracting widgets' styles or whole widgets to Widget class. But, as it was my first real approach to Flutter, i did not do it for now.
