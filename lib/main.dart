@@ -101,19 +101,35 @@ class _HomePageState extends State<HomePage> {
                 fontWeight: FontWeight.bold
             ),
           ),
-          Card(
-              margin: EdgeInsets.symmetric(
-                vertical: 32.0
-              ),
-              child: Column(
-                children: _records
-                    .map((record) => _buildSleepRecordItem(record))
-                    .toList(),
-              )
-          ),
+          _buildSleepRecordsCard()
         ],
       ),
     );
+  }
+
+  Widget _buildSleepRecordsCard(){
+    if(_records.length <= 0)
+      return Container(
+        margin: EdgeInsets.only(top: 16.0),
+        child: Text(
+            "No sleep records added today!",
+          style: TextStyle(
+              color: Colors.black26,
+              fontStyle: FontStyle.italic
+          ),
+        ),
+      );
+    else
+      return Card(
+          margin: EdgeInsets.symmetric(
+              vertical: 32.0
+          ),
+          child: Column(
+            children: _records
+                .map((record) => _buildSleepRecordItem(record))
+                .toList(),
+          )
+      );
   }
 
   String _formatSleepDurationString(int durationInMinutes){
