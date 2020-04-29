@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
     return SleepRecordItem(
       hour: DateFormat("HH:mm").format(record.date),
       title: record.type,
-      subtitle: record.durationInMinutes.toString(),
+      subtitle: _formatSleepDurationString(record.durationInMinutes),
     );
   }
 
@@ -115,4 +115,28 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+  String _formatSleepDurationString(int durationInMinutes){
+    int sleepHours = (durationInMinutes/60).floor();
+    int sleepMinutes = durationInMinutes - 60 * sleepHours;
+
+    String hoursString;
+    if(sleepHours > 1)
+      hoursString = "$sleepHours hours ";
+    else if(sleepHours == 1)
+      hoursString = "$sleepHours hour ";
+    else
+      hoursString = "";
+
+    String minutesString;
+    if(sleepMinutes > 1)
+      minutesString = "$sleepMinutes minutes";
+    else if(sleepMinutes == 1)
+      minutesString = "$sleepMinutes minute";
+    else
+      minutesString = "";
+
+    return hoursString + minutesString;
+  }
+
 }

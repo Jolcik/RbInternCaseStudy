@@ -8,7 +8,7 @@ import 'package:rbcasestudyapp/sleep_record.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 class AddRecordPage extends StatefulWidget {
-  final records;
+  final List<SleepRecord> records;
 
   final List<String> _sleepTypes = [
     "Night's sleep",
@@ -109,9 +109,9 @@ class AddRecordPageState extends State<AddRecordPage> {
         builder: (BuildContext context) {
           return new NumberPickerDialog.integer(
             minValue: 1,
-            maxValue: 150,
+            maxValue: 1000,
             title: new Text("Pick sleep duration time in minutes"),
-            initialIntegerValue: 30,
+            initialIntegerValue: 90,
           );
         }).then((int value) {
       if (value != null) {
@@ -124,7 +124,7 @@ class AddRecordPageState extends State<AddRecordPage> {
 
   void _addSleepRecordAndPop() {
     if (_sleepType != null && _sleepDurationInMinutes != null) {
-      widget.records.add(SleepRecord(
+      widget.records.insert(0, SleepRecord(
           date: _recordDate,
           type: _sleepType,
           durationInMinutes: _sleepDurationInMinutes));

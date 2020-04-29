@@ -42,6 +42,7 @@ class SleepRecordItem extends StatelessWidget {
                           fontSize: 18.0,
                           fontWeight: FontWeight.bold),
                     ),
+                    Container(height: 4.0),
                     Text(
                       subtitle,
                       style: TextStyle(color: Colors.grey, fontSize: 14.0),
