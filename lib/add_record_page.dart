@@ -33,7 +33,7 @@ class AddRecordPage extends StatelessWidget {
             AddRecordPageRowItem(
                 icon: Icons.calendar_today,
                 title: "Date and time",
-                subtitle: DateFormat("d MMMM yyyy, hh:mm").format(DateTime.now())
+                subtitle: DateFormat("d MMMM yyyy, HH:mm").format(DateTime.now())
             ),
             AddRecordPageRowItem(
                 icon: Icons.airline_seat_individual_suite,
